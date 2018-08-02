@@ -3,6 +3,6 @@
     <string name="action_settings">Settings</string>
 
     <!-- 功能标题 -->
-    <string name="title_system">系统</string>
-    <string name="title_widget">控件</string>
+    <string name="title_window_manager">WindowManager sample</string>
+    <string name="title_recycler_view">RecyclerView sample</string>
 </resources>

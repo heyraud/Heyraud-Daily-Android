@@ -7,28 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 描述
+ * 数据列表
  *
  * @author aero.tang
  * @version 2018/8/1 23:27
  */
 public class MainEntities {
 
-    public static List<Entity> sData = new ArrayList<>();
+    public static List<MainEntity> Entities = new ArrayList<>();
 
-    static {
-
+    /**
+     * add sample
+     */
+    private static void addEntity(@StringRes int name, @DrawableRes int icon) {
+        Entities.add(new MainEntity(name, icon));
     }
 
-    public enum Entity {
-        SYSTEM(R.string.title_system, R.drawable.ic_launcher_foreground, Entity.SYSTEM);
-
-        public int name;
-        public int icon;
-
-        Entity(@StringRes int name, @DrawableRes int icon, Entity... children) {
-            this.name = name;
-            this.icon = icon;
-        }
+    static {
+        addEntity(R.string.title_recycler_view, R.drawable.ic_launcher_foreground);
+        addEntity(R.string.title_window_manager, R.drawable.ic_launcher_foreground);
     }
 }
