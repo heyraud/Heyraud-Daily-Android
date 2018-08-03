@@ -15,8 +15,11 @@ public class MainEntity {
     @DrawableRes
     public int icon;
 
-    public MainEntity(@StringRes int name, @DrawableRes int icon) {
+    public Class<? extends BasicActivity> destination;
+
+    public MainEntity(@StringRes int name, @DrawableRes int icon, Class<? extends BasicActivity> destination) {
         this.name = name;
         this.icon = icon;
+        this.destination = destination;
     }
 }

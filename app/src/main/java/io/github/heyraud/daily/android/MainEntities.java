@@ -6,6 +6,9 @@ import android.support.annotation.StringRes;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.heyraud.daily.android.binder.BinderActivity;
+import io.github.heyraud.daily.android.window.WindowActivity;
+
 /**
  * 数据列表
  *
@@ -19,12 +22,15 @@ public class MainEntities {
     /**
      * add sample
      */
-    private static void addEntity(@StringRes int name, @DrawableRes int icon) {
-        Entities.add(new MainEntity(name, icon));
+    private static void addEntity(@StringRes int name, @DrawableRes int icon, Class<? extends BasicActivity> destination) {
+        Entities.add(new MainEntity(name, icon, destination));
     }
 
     static {
-        addEntity(R.string.title_recycler_view, R.drawable.ic_launcher_foreground);
-        addEntity(R.string.title_window_manager, R.drawable.ic_launcher_foreground);
+        //------------------------------------------------------------------------------------------//
+        addEntity(R.string.title_binder, R.drawable.ic_launcher_foreground, BinderActivity.class);
+
+        //------------------------------------------------------------------------------------------//
+        addEntity(R.string.title_window, R.drawable.ic_launcher_foreground, WindowActivity.class);
     }
 }

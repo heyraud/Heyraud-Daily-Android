@@ -1,8 +1,12 @@
 <resources>
-    <string name="app_name">Heyraud-Daily-Android</string>
+    <string name="app_name">Android Sample</string>
     <string name="action_settings">Settings</string>
 
+    <!-- main -->
+    <string name="app_main_header_tip">this is header</string>
+    <string name="app_main_footer_tip">this is footer</string>
+
     <!-- 功能标题 -->
-    <string name="title_window_manager">WindowManager sample</string>
-    <string name="title_recycler_view">RecyclerView sample</string>
+    <string name="title_window">Window sample</string>
+    <string name="title_binder">Binder sample</string>
 </resources>

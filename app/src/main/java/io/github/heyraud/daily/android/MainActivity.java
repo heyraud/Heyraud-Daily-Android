@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -41,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initRcvList() {
+        mRcvList = findViewById(R.id.rcv_list);
         mAdapter = new MainAdapter(this);
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mRcvList.setAdapter(mAdapter);
+        mRcvList.setLayoutManager(mLayoutManager);
     }
 
     @Override
