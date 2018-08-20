@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorPrimary">#ff1a1a1a</color>
+    <color name="colorPrimaryDark">@color/colorPrimary</color>
     <color name="colorAccent">#FF4081</color>
 
     <!-- white -->
@@ -11,5 +11,6 @@
     <color name="app_white_70">#B3FFFFFF</color>
     <color name="app_white_60">#99FFFFFF</color>
     <!-- -->
-    <color name="app_main_item">@color/colorPrimary</color>
+    <color name="app_main_item">#111111</color>
+    <color name="app_background">@android:color/black</color>
 </resources>

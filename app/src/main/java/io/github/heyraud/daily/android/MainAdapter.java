@@ -20,88 +20,42 @@ import io.github.heyraud.daily.android.utils.CollectionUtil;
  * @author aero.tang
  * @version 2018/8/3 00:10
  */
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.EntityMainHolder> {
 
     private Context context;
     private LayoutInflater inflater;
     private List<MainEntity> entities = MainEntities.Entities;
 
-    private static final int ITEM_VIEW_TYPE_HEADER = R.layout.item_main_header;
     private static final int ITEM_VIEW_TYPE_ENTITY = R.layout.item_main_entity;
-    private static final int ITEM_VIEW_TYPE_FOOTER = R.layout.item_main_footer;
 
-    public MainAdapter(Context context) {
+    MainAdapter(Context context) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getItemViewType(int position) {
-        int header = 0;
-        int footer = CollectionUtil.size(entities) + 1;
-        if (position == header) {
-            return ITEM_VIEW_TYPE_HEADER;
-        } else if (position == footer) {
-            return ITEM_VIEW_TYPE_FOOTER;
-        } else {
-            return ITEM_VIEW_TYPE_ENTITY;
-        }
+        return ITEM_VIEW_TYPE_ENTITY;
     }
 
     @NonNull
     @Override
-    public MainHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public EntityMainHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View item = inflater.inflate(viewType, parent, false);
-        switch (viewType) {
-            case ITEM_VIEW_TYPE_HEADER:
-                return new HeaderMainHolder(item);
-            case ITEM_VIEW_TYPE_FOOTER:
-                return new FooterMainHolder(item);
-            case ITEM_VIEW_TYPE_ENTITY:
-                return new EntityMainHolder(item);
-            default:
-                throw new IllegalArgumentException("");
-        }
+        return new EntityMainHolder(item);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MainHolder holder, int position) {
-        if (position > 0 && position <= CollectionUtil.size(entities)) {
-            holder.bind(position, entities.get(position - 1));
-        } else {
-            holder.bind();
-        }
+    public void onBindViewHolder(@NonNull EntityMainHolder holder, int position) {
+        holder.bind(position, entities.get(position));
     }
 
     @Override
     public int getItemCount() {
-        int entitySize = CollectionUtil.size(entities);
-        return entitySize == 0 ? 0 : entitySize + 2;
+        return CollectionUtil.size(entities);
     }
 
-    private class HeaderMainHolder extends MainHolder {
-        private HeaderMainHolder(View itemView) {
-            super(itemView);
-        }
-
-        @Override
-        public void bind() {
-            super.bind();
-        }
-    }
-
-    private class FooterMainHolder extends MainHolder {
-        private FooterMainHolder(View itemView) {
-            super(itemView);
-        }
-
-        @Override
-        public void bind() {
-            super.bind();
-        }
-    }
-
-    private class EntityMainHolder extends MainHolder {
+    class EntityMainHolder extends RecyclerView.ViewHolder {
         final ImageView icon;
         final TextView name;
 
@@ -111,25 +65,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainHolder> {
             name = itemView.findViewById(R.id.iv_main_name);
         }
 
-        @Override
-        public void bind(int position, MainEntity entity) {
+        private void bind(int position, MainEntity entity) {
             icon.setImageResource(entity.icon);
             name.setText(entity.name);
-        }
-    }
-
-    public abstract class MainHolder extends RecyclerView.ViewHolder {
-
-        private MainHolder(View itemView) {
-            super(itemView);
-        }
-
-        public void bind(int position, MainEntity entity) {
-
-        }
-
-        public void bind() {
-
         }
     }
 }
