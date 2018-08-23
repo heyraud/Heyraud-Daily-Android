@@ -1,7 +1,9 @@
-package io.github.heyraud.daily.android;
+package io.github.heyraud.daily.android.main;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v7.content.res.AppCompatResources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Collections;
 import java.util.List;
 
+import io.github.heyraud.daily.android.R;
 import io.github.heyraud.daily.android.utils.CollectionUtil;
 
 /**
@@ -21,12 +23,11 @@ import io.github.heyraud.daily.android.utils.CollectionUtil;
  * @version 2018/8/3 00:10
  */
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.EntityMainHolder> {
-
-    private Context context;
+    private static final int ITEM_VIEW_TYPE_ENTITY = R.layout.item_main_entity;
     private LayoutInflater inflater;
     private List<MainEntity> entities = MainEntities.Entities;
-
-    private static final int ITEM_VIEW_TYPE_ENTITY = R.layout.item_main_entity;
+    private OnItemClickListener mOnItemClickListener;
+    private Context context;
 
     MainAdapter(Context context) {
         this.context = context;
@@ -65,9 +66,25 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.EntityMainHold
             name = itemView.findViewById(R.id.iv_main_name);
         }
 
-        private void bind(int position, MainEntity entity) {
-            icon.setImageResource(entity.icon);
+        private void bind(final int position, final MainEntity entity) {
+            icon.setImageDrawable(AppCompatResources.getDrawable(context, entity.icon));
             name.setText(entity.name);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mOnItemClickListener != null) {
+                        mOnItemClickListener.onItemClick(v, position, entity);
+                    }
+                }
+            });
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position, MainEntity entity);
     }
 }

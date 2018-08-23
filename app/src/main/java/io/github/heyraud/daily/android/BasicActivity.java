@@ -1,6 +1,13 @@
 package io.github.heyraud.daily.android;
 
+import android.os.Bundle;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 /**
  * 积累activity
@@ -8,6 +15,31 @@ import android.support.v7.app.AppCompatActivity;
  * @author aero.tang
  * @version 2018/8/3 22:02
  */
-public class BasicActivity extends AppCompatActivity{
+@SuppressWarnings("FieldCanBeLocal")
+public abstract class BasicActivity extends AppCompatActivity {
 
+    private CoordinatorLayout mParent;
+    private Toolbar mToolbar;
+
+    @LayoutRes
+    protected abstract int getContent();
+    protected abstract void initComponent();
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+    }
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_basic);
+        mParent = findViewById(R.id.activity_container);
+        mToolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        //add content view
+        View content = getLayoutInflater().inflate(getContent(), mParent, false);
+        mParent.addView(content);
+
+        initComponent();
+    }
 }

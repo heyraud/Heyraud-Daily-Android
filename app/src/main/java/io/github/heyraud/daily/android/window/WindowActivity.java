@@ -14,6 +14,16 @@ import io.github.heyraud.daily.android.BasicActivity;
 public class WindowActivity extends BasicActivity {
 
     @Override
+    protected int getContent() {
+        return 0;
+    }
+
+    @Override
+    protected void initComponent() {
+
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }

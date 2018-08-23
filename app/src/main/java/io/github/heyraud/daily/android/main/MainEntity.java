@@ -1,7 +1,9 @@
-package io.github.heyraud.daily.android;
+package io.github.heyraud.daily.android.main;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
+
+import io.github.heyraud.daily.android.BasicActivity;
 
 /**
  * 描述

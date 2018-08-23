@@ -7,6 +7,7 @@
     <string name="app_main_footer_tip">this is footer</string>
 
     <!-- 功能标题 -->
-    <string name="title_window">Window sample</string>
-    <string name="title_binder">Binder sample</string>
+    <string name="title_window">Window Sample</string>
+    <string name="title_binder">Binder Sample</string>
+    <string name="title_document_provider">Document Provider Sample</string>
 </resources>

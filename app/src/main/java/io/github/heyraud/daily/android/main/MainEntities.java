@@ -1,4 +1,4 @@
-package io.github.heyraud.daily.android;
+package io.github.heyraud.daily.android.main;
 
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
@@ -6,7 +6,10 @@ import android.support.annotation.StringRes;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.heyraud.daily.android.BasicActivity;
+import io.github.heyraud.daily.android.R;
 import io.github.heyraud.daily.android.binder.BinderActivity;
+import io.github.heyraud.daily.android.document.DocumentProviderActivity;
 import io.github.heyraud.daily.android.window.WindowActivity;
 
 /**
@@ -28,9 +31,12 @@ public class MainEntities {
 
     static {
         //------------------------------------------------------------------------------------------//
-        addEntity(R.string.title_binder, R.drawable.ic_launcher_foreground, BinderActivity.class);
+        addEntity(R.string.title_binder, R.drawable.ic_android_black_24dp, BinderActivity.class);
 
         //------------------------------------------------------------------------------------------//
-        addEntity(R.string.title_window, R.drawable.ic_launcher_foreground, WindowActivity.class);
+        addEntity(R.string.title_window, R.drawable.ic_android_black_24dp, WindowActivity.class);
+
+        //------------------------------------------------------------------------------------------//
+        addEntity(R.string.title_document_provider, R.drawable.ic_android_black_24dp, DocumentProviderActivity.class);
     }
 }
