@@ -31,11 +31,29 @@ public class Employee implements Parcelable {
      */
     public int monthlySalary;
 
+    /**
+     * 最后修改时间
+     */
+    public long timestamp;
+
+    public Employee(){
+
+    }
+
     protected Employee(Parcel in) {
         name = in.readString();
         jobNum = in.readString();
         position = in.readString();
         monthlySalary = in.readInt();
+        timestamp = in.readLong();
+    }
+
+    public void readFromParcel(Parcel in) {
+        name = in.readString();
+        jobNum = in.readString();
+        position = in.readString();
+        monthlySalary = in.readInt();
+        timestamp = in.readLong();
     }
 
     public static final Creator<Employee> CREATOR = new Creator<Employee>() {
@@ -61,5 +79,17 @@ public class Employee implements Parcelable {
         dest.writeString(jobNum);
         dest.writeString(position);
         dest.writeInt(monthlySalary);
+        dest.writeLong(timestamp);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", jobNum='" + jobNum + '\'' +
+                ", position='" + position + '\'' +
+                ", monthlySalary=" + monthlySalary +
+                ", timestamp=" + timestamp +
+                '}';
     }
 }

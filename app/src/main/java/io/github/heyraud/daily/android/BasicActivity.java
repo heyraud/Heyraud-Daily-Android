@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.FrameLayout;
 
 /**
  * 积累activity
@@ -18,21 +19,23 @@ import android.view.View;
 @SuppressWarnings("FieldCanBeLocal")
 public abstract class BasicActivity extends AppCompatActivity {
 
-    private CoordinatorLayout mParent;
+    private FrameLayout mParent;
     private Toolbar mToolbar;
 
     @LayoutRes
     protected abstract int getContent();
+
     protected abstract void initComponent();
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic);
-        mParent = findViewById(R.id.activity_container);
+        mParent = findViewById(R.id.activity_content);
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
