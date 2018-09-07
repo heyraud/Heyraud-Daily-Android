@@ -20,11 +20,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".window.WindowActivity" />
+        <activity
+            android:name=".window.WindowActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".binder.BinderActivity" />
+        <activity
+            android:name=".binder.BinderActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".document.DocumentProviderActivity" />
+        <activity
+            android:name=".document.DocumentProviderActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".binder.RemoteService"

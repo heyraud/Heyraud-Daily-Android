@@ -29,6 +29,11 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
     private TextView mTvState;
     private TextView mTvMessage;
 
+    private Button mBtnBind;
+    private Button mBtnUnbind;
+    private Button mBtnAdd;
+    private Button mBtnQuery;
+
     @Override
     protected int getContent() {
         return R.layout.activity_binder;
@@ -36,10 +41,10 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
 
     @Override
     protected void initComponent() {
-        Button mBtnBind = findViewById(R.id.btn_bind);
-        Button mBtnUnbind = findViewById(R.id.btn_unbind);
-        Button mBtnAdd = findViewById(R.id.btn_add);
-        Button mBtnFetch = findViewById(R.id.btn_query);
+        mBtnBind = findViewById(R.id.btn_bind);
+        mBtnUnbind = findViewById(R.id.btn_unbind);
+        mBtnAdd = findViewById(R.id.btn_add);
+        mBtnQuery = findViewById(R.id.btn_query);
 
         mTvState = findViewById(R.id.tv_state);
         mTvMessage = findViewById(R.id.tv_message);
@@ -47,7 +52,7 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
         mBtnBind.setOnClickListener(this);
         mBtnUnbind.setOnClickListener(this);
         mBtnAdd.setOnClickListener(this);
-        mBtnFetch.setOnClickListener(this);
+        mBtnQuery.setOnClickListener(this);
     }
 
     @Override
@@ -64,6 +69,10 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
             mBinder = IRemoteService.Stub.asInterface(service);
             mTvState.setTextColor(Color.GREEN);
             mTvState.setText("remote service is connected");
+            mBtnAdd.setEnabled(true);
+            mBtnQuery.setEnabled(true);
+            mBtnUnbind.setEnabled(true);
+            mBtnBind.setEnabled(false);
         }
 
         @Override
@@ -71,6 +80,9 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
             mBinder = null;
             mTvState.setTextColor(Color.GRAY);
             mTvState.setText("remote service is disconnected");
+            mBtnAdd.setEnabled(false);
+            mBtnQuery.setEnabled(false);
+            mBtnUnbind.setEnabled(false);
         }
     };
 
@@ -87,6 +99,10 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
             mIsBound = false;
             mTvState.setTextColor(Color.GRAY);
             mTvState.setText("remote service is unbound");
+            mBtnAdd.setEnabled(false);
+            mBtnQuery.setEnabled(false);
+            mBtnUnbind.setEnabled(false);
+            mBtnBind.setEnabled(true);
         }
     }
 
