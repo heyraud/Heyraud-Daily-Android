@@ -25,6 +25,10 @@
         <activity android:name=".binder.BinderActivity" />
 
         <activity android:name=".document.DocumentProviderActivity" />
+
+        <service
+            android:name=".binder.RemoteService"
+            android:process=":remote" />
     </application>
 
 </manifest>
