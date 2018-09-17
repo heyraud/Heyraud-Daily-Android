@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatDelegate;
  * @author aero.tang
  * @version 2018/8/23 23:14
  */
-public class HTApplication extends Application{
+public class MyApp extends Application{
 
     @Override
     public void onCreate() {

@@ -14,14 +14,11 @@ import io.github.heyraud.daily.android.BasicActivity;
 public class MainEntity {
     @StringRes
     public int name;
-    @DrawableRes
-    public int icon;
 
     public Class<? extends BasicActivity> destination;
 
-    public MainEntity(@StringRes int name, @DrawableRes int icon, Class<? extends BasicActivity> destination) {
+    public MainEntity(@StringRes int name, Class<? extends BasicActivity> destination) {
         this.name = name;
-        this.icon = icon;
         this.destination = destination;
     }
 }

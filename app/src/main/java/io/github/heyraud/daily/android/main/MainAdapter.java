@@ -57,17 +57,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.EntityMainHold
     }
 
     class EntityMainHolder extends RecyclerView.ViewHolder {
-        final ImageView icon;
         final TextView name;
 
         private EntityMainHolder(View itemView) {
             super(itemView);
-            icon = itemView.findViewById(R.id.iv_main_icon);
             name = itemView.findViewById(R.id.iv_main_name);
         }
 
         private void bind(final int position, final MainEntity entity) {
-            icon.setImageDrawable(AppCompatResources.getDrawable(context, entity.icon));
             name.setText(entity.name);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

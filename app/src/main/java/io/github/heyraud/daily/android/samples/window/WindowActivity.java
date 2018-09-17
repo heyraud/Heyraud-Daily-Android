@@ -1,9 +1,10 @@
-package io.github.heyraud.daily.android.window;
+package io.github.heyraud.daily.android.samples.window;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import io.github.heyraud.daily.android.BasicActivity;
+import io.github.heyraud.daily.android.R;
 
 /**
  * 描述
@@ -15,7 +16,7 @@ public class WindowActivity extends BasicActivity {
 
     @Override
     protected int getContent() {
-        return 0;
+        return R.layout.activity_window;
     }
 
     @Override

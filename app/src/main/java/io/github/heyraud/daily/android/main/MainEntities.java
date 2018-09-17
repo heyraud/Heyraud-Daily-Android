@@ -9,8 +9,10 @@ import java.util.List;
 import io.github.heyraud.daily.android.BasicActivity;
 import io.github.heyraud.daily.android.R;
 import io.github.heyraud.daily.android.binder.BinderActivity;
-import io.github.heyraud.daily.android.document.DocumentProviderActivity;
-import io.github.heyraud.daily.android.window.WindowActivity;
+import io.github.heyraud.daily.android.samples.constraint_layout.ConstraintLayoutActivity;
+import io.github.heyraud.daily.android.samples.document_provider.DocumentProviderActivity;
+import io.github.heyraud.daily.android.samples.recycler_view.RecyclerViewActivity;
+import io.github.heyraud.daily.android.samples.window.WindowActivity;
 
 /**
  * 数据列表
@@ -25,18 +27,24 @@ public class MainEntities {
     /**
      * add sample
      */
-    private static void addEntity(@StringRes int name, @DrawableRes int icon, Class<? extends BasicActivity> destination) {
-        Entities.add(new MainEntity(name, icon, destination));
+    private static void addEntity(@StringRes int name, Class<? extends BasicActivity> destination) {
+        Entities.add(new MainEntity(name, destination));
     }
 
     static {
         //------------------------------------------------------------------------------------------//
-        addEntity(R.string.title_binder, R.drawable.ic_android_black_24dp, BinderActivity.class);
+        addEntity(R.string.title_binder, BinderActivity.class);
 
         //------------------------------------------------------------------------------------------//
-        addEntity(R.string.title_window, R.drawable.ic_android_black_24dp, WindowActivity.class);
+        addEntity(R.string.title_window, WindowActivity.class);
 
         //------------------------------------------------------------------------------------------//
-        addEntity(R.string.title_document_provider, R.drawable.ic_android_black_24dp, DocumentProviderActivity.class);
+        addEntity(R.string.title_constraint_layout, ConstraintLayoutActivity.class);
+
+        //------------------------------------------------------------------------------------------//
+        addEntity(R.string.title_recycler_layout, RecyclerViewActivity.class);
+
+        //------------------------------------------------------------------------------------------//
+        addEntity(R.string.title_document_provider, DocumentProviderActivity.class);
     }
 }

@@ -3,7 +3,7 @@
     package="io.github.heyraud.daily.android">
 
     <application
-        android:name=".HTApplication"
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,16 +21,24 @@
         </activity>
 
         <activity
-            android:name=".window.WindowActivity"
-            android:screenOrientation="portrait" />
+            android:name=".samples.window.WindowActivity"
+            android:screenOrientation="sensor" />
 
         <activity
             android:name=".binder.BinderActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="sensor" />
 
         <activity
-            android:name=".document.DocumentProviderActivity"
-            android:screenOrientation="portrait" />
+            android:name=".samples.document_provider.DocumentProviderActivity"
+            android:screenOrientation="sensor" />
+
+        <activity
+            android:name=".samples.constraint_layout.ConstraintLayoutActivity"
+            android:screenOrientation="sensor" />
+
+        <activity
+            android:name=".samples.recycler_view.RecyclerViewActivity"
+            android:screenOrientation="sensor" />
 
         <service
             android:name=".binder.RemoteService"

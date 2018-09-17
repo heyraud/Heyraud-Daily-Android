@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff1a1a1a</color>
-    <color name="colorPrimaryDark">@color/colorPrimary</color>
-    <color name="colorAccent">#1088F2</color>
+    <color name="colorPrimary">#00B97F</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#E91E63</color>
 
     <!-- white -->
     <color name="app_white">@android:color/white</color>
@@ -11,6 +11,6 @@
     <color name="app_white_70">#B3FFFFFF</color>
     <color name="app_white_60">#99FFFFFF</color>
     <!-- -->
-    <color name="app_main_item">#111111</color>
-    <color name="app_background">@android:color/black</color>
+    <color name="app_main_item">@color/app_white</color>
+    <color name="app_background">#ECF0F2</color>
 </resources>
