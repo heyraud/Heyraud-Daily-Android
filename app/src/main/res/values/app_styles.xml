@@ -4,9 +4,8 @@
     <style name="app_btn_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
-        <item name="android:background">@drawable/rect_round_primary</item>
-        <item name="android:textColor">@color/app_white</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/rect_round_stroke_primary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 </resources>

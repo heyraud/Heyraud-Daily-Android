@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import io.github.heyraud.daily.android.BasicActivity;
 import io.github.heyraud.daily.android.R;
@@ -28,11 +31,10 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
 
     private TextView mTvState;
     private TextView mTvMessage;
-
-    private Button mBtnBind;
-    private Button mBtnUnbind;
-    private Button mBtnAdd;
-    private Button mBtnQuery;
+    private TextView mBtnBind;
+    private TextView mBtnUnbind;
+    private TextView mBtnAdd;
+    private TextView mBtnQuery;
 
     @Override
     protected int getContent() {
@@ -67,7 +69,7 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mBinder = IRemoteService.Stub.asInterface(service);
-            mTvState.setTextColor(Color.GREEN);
+            mTvState.setTextColor(ContextCompat.getColor(BinderActivity.this, R.color.colorAccent));
             mTvState.setText("remote service is connected");
             mBtnAdd.setEnabled(true);
             mBtnQuery.setEnabled(true);
