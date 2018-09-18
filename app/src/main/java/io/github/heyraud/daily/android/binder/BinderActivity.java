@@ -21,7 +21,7 @@ import io.github.heyraud.daily.android.BasicActivity;
 import io.github.heyraud.daily.android.R;
 
 /**
- * about binder
+ * Binder Sample
  *
  * @author aero.tang
  * @version 2018/8/3 22:06

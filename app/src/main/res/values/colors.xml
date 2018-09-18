@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- app -->
     <color name="colorPrimary">#323232</color>
     <color name="colorPrimaryDark">#323232</color>
-    <color name="colorAccent">#00B97F</color>
+    <color name="colorAccent">#2196F3</color>
 
     <!-- white -->
     <color name="app_white">@android:color/white</color>
