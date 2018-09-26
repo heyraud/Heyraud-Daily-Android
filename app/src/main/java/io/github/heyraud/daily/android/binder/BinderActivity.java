@@ -69,7 +69,7 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mBinder = IRemoteService.Stub.asInterface(service);
-            mTvState.setTextColor(ContextCompat.getColor(BinderActivity.this, R.color.colorAccent));
+            mTvState.setTextColor(Color.GREEN);
             mTvState.setText("remote service is connected");
             mBtnAdd.setEnabled(true);
             mBtnQuery.setEnabled(true);

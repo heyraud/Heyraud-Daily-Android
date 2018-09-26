@@ -8,9 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import io.github.heyraud.daily.android.BasicActivity;
 import io.github.heyraud.daily.android.R;
 
@@ -25,11 +22,15 @@ public class ConstraintLayoutActivity extends BasicActivity {
     private ViewPager mPager;
     private ConstraintAdapter mAdapter;
     private String[] titles = new String[]{
-            "edge",
-            "chain"};
+            "Relative positioning",
+            "Margins",
+            "Centering positioning",
+            "Circular positioning"};
     private int[] examples = new int[]{
-            R.layout.example_constraint_edge,
-            R.layout.example_constraint_chain};
+            R.layout.example_constraint_relative_positioning,
+            R.layout.example_constraint_margins,
+            R.layout.example_constraint_centering_positioning,
+            R.layout.example_constraint_circular_positioning};
 
     @Override
     protected int getContent() {
@@ -70,6 +71,11 @@ public class ConstraintLayoutActivity extends BasicActivity {
         @Override
         public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == object;
+        }
+
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            container.removeView((View) object);
         }
     }
 }
