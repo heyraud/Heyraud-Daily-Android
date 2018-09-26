@@ -2,6 +2,7 @@ package io.github.heyraud.daily.android.samples.window;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import io.github.heyraud.daily.android.BasicActivity;
 import io.github.heyraud.daily.android.R;
@@ -15,12 +16,12 @@ import io.github.heyraud.daily.android.R;
 public class WindowActivity extends BasicActivity {
 
     @Override
-    protected int getContent() {
+    public int getContent() {
         return R.layout.activity_window;
     }
 
     @Override
-    protected void initComponent() {
+    public void initComponent(View view) {
 
     }
 

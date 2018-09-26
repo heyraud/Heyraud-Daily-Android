@@ -26,12 +26,12 @@ import io.github.heyraud.daily.android.R;
 public class DocumentProviderActivity extends BasicActivity {
 
     @Override
-    protected int getContent() {
+    public int getContent() {
         return R.layout.content_document_provider;
     }
 
     @Override
-    protected void initComponent() {
+    public void initComponent(View view) {
 
         Button button = findViewById(R.id.btn_get_content);
         button.setOnClickListener(new View.OnClickListener() {

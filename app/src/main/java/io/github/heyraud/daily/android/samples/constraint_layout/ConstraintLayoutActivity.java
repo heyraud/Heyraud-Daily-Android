@@ -33,12 +33,12 @@ public class ConstraintLayoutActivity extends BasicActivity {
             R.layout.example_constraint_circular_positioning};
 
     @Override
-    protected int getContent() {
+    public int getContent() {
         return R.layout.activity_constraint_layout;
     }
 
     @Override
-    protected void initComponent() {
+    public void initComponent(View view) {
         mTab = findViewById(R.id.tab);
         mPager = findViewById(R.id.pager);
 

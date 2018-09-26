@@ -17,15 +17,10 @@ import android.widget.FrameLayout;
  * @version 2018/8/3 22:02
  */
 @SuppressWarnings("FieldCanBeLocal")
-public abstract class BasicActivity extends AppCompatActivity {
+public abstract class BasicActivity extends AppCompatActivity implements IPage {
 
     private FrameLayout mParent;
     private Toolbar mToolbar;
-
-    @LayoutRes
-    protected abstract int getContent();
-
-    protected abstract void initComponent();
 
     static {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -43,6 +38,6 @@ public abstract class BasicActivity extends AppCompatActivity {
         View content = getLayoutInflater().inflate(getContent(), mParent, false);
         mParent.addView(content);
 
-        initComponent();
+        initComponent(content);
     }
 }

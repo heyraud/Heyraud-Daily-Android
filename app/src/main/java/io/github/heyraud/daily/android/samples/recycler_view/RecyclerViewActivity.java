@@ -1,5 +1,7 @@
 package io.github.heyraud.daily.android.samples.recycler_view;
 
+import android.view.View;
+
 import io.github.heyraud.daily.android.BasicActivity;
 import io.github.heyraud.daily.android.R;
 
@@ -11,12 +13,12 @@ import io.github.heyraud.daily.android.R;
  */
 public class RecyclerViewActivity extends BasicActivity {
     @Override
-    protected int getContent() {
+    public int getContent() {
         return R.layout.activity_recycler_view;
     }
 
     @Override
-    protected void initComponent() {
+    public void initComponent(View view) {
 
     }
 }

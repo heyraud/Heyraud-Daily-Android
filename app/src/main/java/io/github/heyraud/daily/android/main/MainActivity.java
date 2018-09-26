@@ -20,12 +20,12 @@ public class MainActivity extends BasicActivity implements MainAdapter.OnItemCli
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
-    protected int getContent() {
+    public int getContent() {
         return R.layout.content_main;
     }
 
     @Override
-    protected void initComponent() {
+    public void initComponent(View view) {
         initRcvList();
     }
 

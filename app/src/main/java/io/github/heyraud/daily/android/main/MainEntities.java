@@ -1,6 +1,5 @@
 package io.github.heyraud.daily.android.main;
 
-import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ import io.github.heyraud.daily.android.binder.BinderActivity;
 import io.github.heyraud.daily.android.samples.constraint_layout.ConstraintLayoutActivity;
 import io.github.heyraud.daily.android.samples.document_provider.DocumentProviderActivity;
 import io.github.heyraud.daily.android.samples.recycler_view.RecyclerViewActivity;
+import io.github.heyraud.daily.android.samples.view_pager.ViewPagerActivity;
 import io.github.heyraud.daily.android.samples.window.WindowActivity;
 
 /**
@@ -43,6 +43,9 @@ public class MainEntities {
 
         //------------------------------------------------------------------------------------------//
         addEntity(R.string.title_recycler_layout, RecyclerViewActivity.class);
+
+        //------------------------------------------------------------------------------------------//
+        addEntity(R.string.title_view_pager, ViewPagerActivity.class);
 
         //------------------------------------------------------------------------------------------//
         addEntity(R.string.title_document_provider, DocumentProviderActivity.class);

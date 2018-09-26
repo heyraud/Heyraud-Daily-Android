@@ -37,12 +37,12 @@ public class BinderActivity extends BasicActivity implements View.OnClickListene
     private TextView mBtnQuery;
 
     @Override
-    protected int getContent() {
+    public int getContent() {
         return R.layout.activity_binder;
     }
 
     @Override
-    protected void initComponent() {
+    public void initComponent(View view) {
         mBtnBind = findViewById(R.id.btn_bind);
         mBtnUnbind = findViewById(R.id.btn_unbind);
         mBtnAdd = findViewById(R.id.btn_add);

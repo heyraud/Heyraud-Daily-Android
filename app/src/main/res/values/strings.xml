@@ -12,4 +12,5 @@
     <string name="title_document_provider">DocumentProvider</string>
     <string name="title_constraint_layout">ConstraintLayout</string>
     <string name="title_recycler_layout">RecyclerView</string>
+    <string name="title_view_pager">ViewPager</string>
 </resources>
