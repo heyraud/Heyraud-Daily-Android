@@ -1,12 +1,17 @@
 package io.github.heyraud.daily.android.samples.constraint_layout;
 
+import android.animation.ValueAnimator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.design.widget.TabLayout;
+import android.support.transition.TransitionManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import io.github.heyraud.daily.android.BasicActivity;
 import io.github.heyraud.daily.android.R;
@@ -47,6 +52,61 @@ public class ConstraintLayoutActivity extends BasicActivity {
         mTab.setupWithViewPager(mPager);
     }
 
+    private ConstraintLayout inflate(int position) {
+        return (ConstraintLayout) getLayoutInflater().inflate(examples[position], mPager, false);
+    }
+
+    private View obtainRelativePositioning() {
+        final ConstraintLayout item = inflate(0);
+        final Button a = item.findViewById(R.id.a);
+        final Button b = item.findViewById(R.id.b);
+
+        final ConstraintSet set = new ConstraintSet();
+        set.clone(item);
+
+        a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                set.clear(b.getId(), ConstraintSet.START);
+                set.clear(b.getId(), ConstraintSet.BOTTOM);
+                set.connect(b.getId(), ConstraintSet.START, a.getId(), ConstraintSet.START);
+                set.connect(b.getId(), ConstraintSet.TOP, a.getId(), ConstraintSet.TOP);
+                TransitionManager.beginDelayedTransition(item);
+                set.applyTo(item);
+
+                set.clear(b.getId(), ConstraintSet.START);
+                set.clear(b.getId(), ConstraintSet.TOP);
+                set.connect(b.getId(), ConstraintSet.START, a.getId(), ConstraintSet.START);
+                set.connect(b.getId(), ConstraintSet.TOP, a.getId(), ConstraintSet.BOTTOM);
+                TransitionManager.beginDelayedTransition(item);
+                set.applyTo(item);
+            }
+        });
+
+        return item;
+    }
+
+    private View obtainMargins() {
+        View item = inflate(1);
+
+
+        return item;
+    }
+
+    private View obtainCenteringPositioning() {
+        View item = inflate(2);
+
+
+        return item;
+    }
+
+    private View obtainCircularPositioning() {
+        View item = inflate(3);
+
+
+        return item;
+    }
+
     private class ConstraintAdapter extends PagerAdapter {
 
         @Override
@@ -63,7 +123,23 @@ public class ConstraintLayoutActivity extends BasicActivity {
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            View item = getLayoutInflater().inflate(examples[position], container, false);
+            View item;
+            switch (position) {
+                case 0:
+                    item = obtainRelativePositioning();
+                    break;
+                case 1:
+                    item = obtainMargins();
+                    break;
+                case 2:
+                    item = obtainCenteringPositioning();
+                    break;
+                case 3:
+                    item = obtainCircularPositioning();
+                    break;
+                default:
+                    throw new IllegalArgumentException("invalid position");
+            }
             container.addView(item);
             return item;
         }
