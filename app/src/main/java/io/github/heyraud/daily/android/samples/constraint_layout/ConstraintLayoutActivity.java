@@ -6,12 +6,18 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.design.widget.TabLayout;
+import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
+import android.support.transition.TransitionSet;
+import android.support.transition.TransitionValues;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import io.github.heyraud.daily.android.BasicActivity;
 import io.github.heyraud.daily.android.R;
@@ -52,56 +58,125 @@ public class ConstraintLayoutActivity extends BasicActivity {
         mTab.setupWithViewPager(mPager);
     }
 
-    private ConstraintLayout inflate(int position) {
-        return (ConstraintLayout) getLayoutInflater().inflate(examples[position], mPager, false);
+    private View inflate(int position) {
+        return getLayoutInflater().inflate(examples[position], mPager, false);
     }
 
+    private int startSideHorizontalV;
+    private int anchorHorizontalV;
+    private int endSideHorizontalV;
+    private int startSideVerticalV;
+    private int anchorVerticalV;
+    private int endSideVerticalV;
+
     private View obtainRelativePositioning() {
-        final ConstraintLayout item = inflate(0);
+        final View container = inflate(0);
+
+        final RadioGroup startSideH = container.findViewById(R.id.start_side_horizontal);
+        final RadioGroup anchorH = container.findViewById(R.id.anchor_horizontal);
+        final RadioGroup endSideH = container.findViewById(R.id.end_side_horizontal);
+        final RadioGroup startSideV = container.findViewById(R.id.start_side_vertical);
+        final RadioGroup anchorV = container.findViewById(R.id.anchor_vertical);
+        final RadioGroup endSideV = container.findViewById(R.id.end_side_vertical);
+
+        startSideH.check(startSideH.getChildAt(0).getId());
+        anchorH.check(anchorH.getChildAt(0).getId());
+        endSideH.check(endSideH.getChildAt(0).getId());
+        startSideV.check(startSideV.getChildAt(0).getId());
+        anchorV.check(anchorV.getChildAt(0).getId());
+        endSideV.check(endSideV.getChildAt(0).getId());
+
+        final ConstraintLayout item = container.findViewById(R.id.parent);
         final Button a = item.findViewById(R.id.a);
         final Button b = item.findViewById(R.id.b);
-
         final ConstraintSet set = new ConstraintSet();
         set.clone(item);
 
-        a.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                set.clear(b.getId(), ConstraintSet.START);
-                set.clear(b.getId(), ConstraintSet.BOTTOM);
-                set.connect(b.getId(), ConstraintSet.START, a.getId(), ConstraintSet.START);
-                set.connect(b.getId(), ConstraintSet.TOP, a.getId(), ConstraintSet.TOP);
-                TransitionManager.beginDelayedTransition(item);
-                set.applyTo(item);
+        startSideHorizontalV = ConstraintSet.START;
+        anchorHorizontalV = a.getId();
+        endSideHorizontalV = ConstraintSet.START;
+        startSideVerticalV = ConstraintSet.TOP;
+        anchorVerticalV = a.getId();
+        endSideVerticalV = ConstraintSet.TOP;
 
-                set.clear(b.getId(), ConstraintSet.START);
-                set.clear(b.getId(), ConstraintSet.TOP);
-                set.connect(b.getId(), ConstraintSet.START, a.getId(), ConstraintSet.START);
-                set.connect(b.getId(), ConstraintSet.TOP, a.getId(), ConstraintSet.BOTTOM);
+        RadioGroup.OnCheckedChangeListener onCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                set.clear(b.getId(), startSideHorizontalV);
+                set.clear(b.getId(), startSideVerticalV);
+
+                String tag = (String) group.findViewById(checkedId).getTag();
+                int value = Integer.parseInt(tag);
+                switch (group.getId()) {
+                    case R.id.start_side_horizontal:
+                        startSideHorizontalV = value;
+                        break;
+                    case R.id.anchor_horizontal:
+                        if (value == 0) {
+                            anchorHorizontalV = a.getId();
+                        } else if (value == 1) {
+                            anchorHorizontalV = ConstraintSet.PARENT_ID;
+                        }
+                        break;
+                    case R.id.end_side_horizontal:
+                        endSideHorizontalV = value;
+                        break;
+                    case R.id.start_side_vertical:
+                        startSideVerticalV = value;
+                        break;
+                    case R.id.anchor_vertical:
+                        if (value == 0) {
+                            anchorVerticalV = a.getId();
+                        } else if (value == 1) {
+                            anchorVerticalV = ConstraintSet.PARENT_ID;
+                        }
+                        break;
+                    case R.id.end_side_vertical:
+                        endSideVerticalV = value;
+                        break;
+                }
+
+                set.connect(b.getId(), startSideHorizontalV, anchorHorizontalV, endSideHorizontalV);
+                if (startSideVerticalV == ConstraintSet.BASELINE) {
+                    set.connect(b.getId(), ConstraintSet.BASELINE, anchorVerticalV, ConstraintSet.BASELINE);
+                } else {
+                    set.connect(b.getId(), startSideVerticalV, anchorVerticalV, endSideVerticalV);
+                }
+
                 TransitionManager.beginDelayedTransition(item);
                 set.applyTo(item);
             }
-        });
+        };
 
-        return item;
+        startSideH.setOnCheckedChangeListener(onCheckedChangeListener);
+        anchorH.setOnCheckedChangeListener(onCheckedChangeListener);
+        endSideH.setOnCheckedChangeListener(onCheckedChangeListener);
+        startSideV.setOnCheckedChangeListener(onCheckedChangeListener);
+        anchorV.setOnCheckedChangeListener(onCheckedChangeListener);
+        endSideV.setOnCheckedChangeListener(onCheckedChangeListener);
+
+        return container;
     }
 
     private View obtainMargins() {
-        View item = inflate(1);
+        final View container = inflate(1);
+        final ConstraintLayout item = container.findViewById(R.id.parent);
 
 
         return item;
     }
 
     private View obtainCenteringPositioning() {
-        View item = inflate(2);
+        final View container = inflate(2);
+        final ConstraintLayout item = container.findViewById(R.id.parent);
 
 
         return item;
     }
 
     private View obtainCircularPositioning() {
-        View item = inflate(3);
+        final View container = inflate(3);
+        final ConstraintLayout item = container.findViewById(R.id.parent);
 
 
         return item;
