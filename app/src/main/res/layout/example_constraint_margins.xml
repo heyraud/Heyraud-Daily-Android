@@ -1,46 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="HardcodedText">
+    android:orientation="vertical"
+    android:padding="6dp"
+    tools:ignore="HardcodedText,SmallSp">
 
-    <Button
-        android:id="@+id/A"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="A"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/B"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="B"
-        app:layout_constraintStart_toEndOf="@+id/A"
-        app:layout_constraintTop_toTopOf="@+id/A" />
+        <Button
+            android:id="@+id/btn_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="change A's Visibility"
+            android:visibility="visible" />
 
-    <Button
-        android:id="@+id/C"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="C"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/A" />
+        <Button
+            android:id="@+id/btn_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="change C's Visibility" />
 
-    <Button
-        android:id="@+id/D"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="D"
-        app:layout_constraintStart_toEndOf="@+id/C"
-        app:layout_constraintTop_toTopOf="@+id/C"
-        app:layout_goneMarginStart="120dp" />
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:background="@drawable/rect_round_stroke_accent">
+
+        <Button
+            android:id="@+id/a"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="B"
+            app:layout_constraintStart_toEndOf="@+id/a"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/c"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="C"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/a"
+            app:layout_goneMarginTop="80dp" />
+
+        <Button
+            android:id="@+id/d"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="D"
+            app:layout_constraintStart_toEndOf="@+id/c"
+            app:layout_constraintTop_toBottomOf="@+id/b"
+            app:layout_goneMarginStart="112dp" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

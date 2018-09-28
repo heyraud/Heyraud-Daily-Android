@@ -1,128 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="HardcodedText">
+    android:orientation="vertical">
 
-    <View
-        android:id="@+id/center"
-        android:layout_width="5dp"
-        android:layout_height="5dp"
-        android:background="@drawable/circle_accent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <SeekBar
+        android:id="@+id/seek_circle_angle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="12"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="0"
-        app:layout_constraintCircleRadius="100dp" />
+    <SeekBar
+        android:id="@+id/seek_circle_radius"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="30"
-        app:layout_constraintCircleRadius="100dp" />
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:background="@drawable/rect_round_stroke_accent"
+        tools:ignore="HardcodedText">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="60"
-        app:layout_constraintCircleRadius="100dp" />
+        <View
+            android:id="@+id/center"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/circle_accent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="90"
-        app:layout_constraintCircleRadius="100dp" />
+        <TextView
+            android:id="@+id/a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textAppearance="?android:textAppearanceLarge"
+            app:layout_constraintCircle="@+id/center"
+            app:layout_constraintCircleAngle="30"
+            app:layout_constraintCircleRadius="100dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="120"
-        app:layout_constraintCircleRadius="100dp" />
+    </android.support.constraint.ConstraintLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="150"
-        app:layout_constraintCircleRadius="100dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="6"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="180"
-        app:layout_constraintCircleRadius="100dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="7"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="210"
-        app:layout_constraintCircleRadius="100dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="8"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="240"
-        app:layout_constraintCircleRadius="100dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="9"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="270"
-        app:layout_constraintCircleRadius="100dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="10"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="300"
-        app:layout_constraintCircleRadius="100dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="11"
-        android:textAppearance="?android:textAppearanceSmall"
-        app:layout_constraintCircle="@+id/center"
-        app:layout_constraintCircleAngle="330"
-        app:layout_constraintCircleRadius="100dp" />
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
