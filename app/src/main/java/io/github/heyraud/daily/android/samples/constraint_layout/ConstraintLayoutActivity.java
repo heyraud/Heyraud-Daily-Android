@@ -41,12 +41,14 @@ public class ConstraintLayoutActivity extends BasicActivity {
             "Relative positioning",
             "Margins",
             "Centering positioning",
-            "Circular positioning"};
+            "Circular positioning",
+            "Dimensions constraints"};
     private int[] examples = new int[]{
             R.layout.example_constraint_relative_positioning,
             R.layout.example_constraint_margins,
             R.layout.example_constraint_centering_positioning,
-            R.layout.example_constraint_circular_positioning};
+            R.layout.example_constraint_circular_positioning,
+            R.layout.example_constraint_dimensions_constraints};
 
     @Override
     public int getContent() {
@@ -323,6 +325,55 @@ public class ConstraintLayoutActivity extends BasicActivity {
         return container;
     }
 
+    private View obtainDimensionsConstraints() {
+        final View container = inflate(4);
+        final ConstraintLayout item = container.findViewById(R.id.parent);
+        final Button a = item.findViewById(R.id.a);
+        final RadioGroup groupW = container.findViewById(R.id.group_w);
+        final RadioGroup groupH = container.findViewById(R.id.group_h);
+        groupW.check(groupW.getChildAt(1).getId());
+        groupH.check(groupH.getChildAt(1).getId());
+
+        final ConstraintSet set = new ConstraintSet();
+        set.clone(item);
+
+        groupW.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int index = group.indexOfChild(group.findViewById(checkedId));
+                if (index == 0) {
+                    set.constrainWidth(a.getId(), ConstraintLayout.LayoutParams.MATCH_PARENT);
+                } else if (index == 1) {
+                    set.constrainWidth(a.getId(), ConstraintLayout.LayoutParams.WRAP_CONTENT);
+                } else if (index == 2) {
+                    set.constrainWidth(a.getId(), 0);
+                }
+
+                TransitionManager.beginDelayedTransition(item);
+                set.applyTo(item);
+            }
+        });
+
+        groupH.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int index = group.indexOfChild(group.findViewById(checkedId));
+                if (index == 0) {
+                    set.constrainHeight(a.getId(), ConstraintLayout.LayoutParams.MATCH_PARENT);
+                } else if (index == 1) {
+                    set.constrainHeight(a.getId(), ConstraintLayout.LayoutParams.WRAP_CONTENT);
+                } else if (index == 2) {
+                    set.constrainHeight(a.getId(), 0);
+                }
+
+                TransitionManager.beginDelayedTransition(item);
+                set.applyTo(item);
+            }
+        });
+
+        return container;
+    }
+
     private class ConstraintAdapter extends PagerAdapter {
 
         @Override
@@ -353,6 +404,9 @@ public class ConstraintLayoutActivity extends BasicActivity {
                 case 3:
                     item = obtainCircularPositioning();
                     break;
+                case 4:
+                    item = obtainDimensionsConstraints();
+                    break;
                 default:
                     throw new IllegalArgumentException("invalid position");
             }
@@ -370,4 +424,6 @@ public class ConstraintLayoutActivity extends BasicActivity {
             container.removeView((View) object);
         }
     }
+
+
 }
