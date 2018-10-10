@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:ignore="HardcodedText">
 
-    <io.github.heyraud.daily.android.views.StateTextView
+    <io.github.thismj.android.views.StateTextView
         android:id="@+id/btn_bind"
         style="@style/app_btn_style"
         android:layout_marginEnd="8dp"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <io.github.heyraud.daily.android.views.StateTextView
+    <io.github.thismj.android.views.StateTextView
         android:id="@+id/btn_unbind"
         style="@style/app_btn_style"
         android:layout_marginEnd="8dp"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_bind" />
 
-    <io.github.heyraud.daily.android.views.StateTextView
+    <io.github.thismj.android.views.StateTextView
         android:id="@+id/btn_add"
         style="@style/app_btn_style"
         android:layout_marginEnd="8dp"
@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_unbind" />
 
-    <io.github.heyraud.daily.android.views.StateTextView
+    <io.github.thismj.android.views.StateTextView
         android:id="@+id/btn_query"
         style="@style/app_btn_style"
         android:layout_marginEnd="8dp"
