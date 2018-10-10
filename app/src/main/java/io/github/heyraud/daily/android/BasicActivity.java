@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 /**
- * 积累activity
+ * base activity
  *
  * @author aero.tang
  * @version 2018/8/3 22:02
