@@ -3,7 +3,7 @@ package io.github.thismj.android.samples.recycler_view;
 import android.view.View;
 
 import io.github.thismj.android.BasicActivity;
-import io.github.heyraud.daily.android.R;
+import io.github.thismj.android.R;
 
 /**
  * RecyclerView Sample

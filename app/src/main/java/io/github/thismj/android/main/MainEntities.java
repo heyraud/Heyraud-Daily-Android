@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.thismj.android.BasicActivity;
-import io.github.heyraud.daily.android.R;
+import io.github.thismj.android.R;
 import io.github.thismj.android.binder.BinderActivity;
 import io.github.thismj.android.samples.constraint_layout.ConstraintLayoutActivity;
 import io.github.thismj.android.samples.document_provider.DocumentProviderActivity;

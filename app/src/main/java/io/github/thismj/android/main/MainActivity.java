@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import io.github.thismj.android.BasicActivity;
-import io.github.heyraud.daily.android.R;
+import io.github.thismj.android.R;
 
 public class MainActivity extends BasicActivity implements MainAdapter.OnItemClickListener {
     private static final String TAG = "MainActivity";

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import io.github.heyraud.daily.android.R;
+import io.github.thismj.android.R;
 import io.github.thismj.android.utils.CollectionUtil;
 
 /**

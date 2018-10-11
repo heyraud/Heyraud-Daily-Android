@@ -9,16 +9,20 @@ import android.support.design.widget.TabLayout;
 import android.support.transition.TransitionManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import io.github.thismj.android.BasicActivity;
-import io.github.heyraud.daily.android.R;
+import io.github.thismj.android.R;
 
 /**
  * ConstraintLayout Sample
@@ -362,6 +366,28 @@ public class ConstraintLayoutActivity extends BasicActivity {
 
                 TransitionManager.beginDelayedTransition(item);
                 set.applyTo(item);
+            }
+        });
+
+        final EditText edit = container.findViewById(R.id.edit);
+        edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (TextUtils.isEmpty(s.toString())) {
+                    a.setText("A");
+                } else {
+                    a.setText(s.toString());
+                }
             }
         });
 

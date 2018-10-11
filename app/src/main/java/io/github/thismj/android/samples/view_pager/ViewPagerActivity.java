@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import io.github.thismj.android.BasicActivity;
-import io.github.heyraud.daily.android.R;
+import io.github.thismj.android.R;
 
 /**
  * ViewPager Sample

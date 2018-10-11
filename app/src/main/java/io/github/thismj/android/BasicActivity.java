@@ -8,8 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import io.github.heyraud.daily.android.R;
-
 /**
  * base activity
  *
