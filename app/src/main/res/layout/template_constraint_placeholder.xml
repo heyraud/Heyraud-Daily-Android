@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="android.support.constraint.ConstraintLayout">
+
+    <android.support.constraint.Placeholder
+        android:id="@+id/template_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:content="@id/content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Placeholder
+        android:id="@+id/template_tab_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:content="@+id/tab_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/template_tab_2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Placeholder
+        android:id="@+id/template_tab_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:content="@+id/tab_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/template_tab_3"
+        app:layout_constraintStart_toEndOf="@id/template_tab_1" />
+
+    <android.support.constraint.Placeholder
+        android:id="@+id/template_tab_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:content="@+id/tab_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/template_tab_4"
+        app:layout_constraintStart_toEndOf="@+id/template_tab_2" />
+
+    <android.support.constraint.Placeholder
+        android:id="@+id/template_tab_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:content="@id/tab_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/template_tab_3" />
+
+
+</merge>

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
+import android.support.constraint.Placeholder;
 import android.support.design.widget.TabLayout;
 import android.support.transition.TransitionManager;
 import android.support.v4.view.PagerAdapter;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -40,13 +42,16 @@ public class ConstraintLayoutActivity extends BasicActivity {
             "Margins",
             "Centering positioning",
             "Circular positioning",
-            "Dimensions constraints"};
+            "Dimensions constraints",
+            "Placeholder"};
+
     private int[] examples = new int[]{
             R.layout.example_constraint_relative_positioning,
             R.layout.example_constraint_margins,
             R.layout.example_constraint_centering_positioning,
             R.layout.example_constraint_circular_positioning,
-            R.layout.example_constraint_dimensions_constraints};
+            R.layout.example_constraint_dimensions_constraints,
+            R.layout.example_constraint_placeholder};
 
     @Override
     public int getContent() {
@@ -169,9 +174,12 @@ public class ConstraintLayoutActivity extends BasicActivity {
         final Button a = item.findViewById(R.id.a);
         final Button c = item.findViewById(R.id.c);
         final Button d = item.findViewById(R.id.d);
+        final Button e = item.findViewById(R.id.e);
+        final Button f = item.findViewById(R.id.f);
 
         final Button btnA = container.findViewById(R.id.btn_a);
         final Button btnC = container.findViewById(R.id.btn_c);
+        final Button btnE = container.findViewById(R.id.btn_e);
 
         final ConstraintSet set = new ConstraintSet();
         set.clone(item);
@@ -206,6 +214,24 @@ public class ConstraintLayoutActivity extends BasicActivity {
                 set.applyTo(item);
             }
         });
+
+        btnE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (e.getVisibility() == View.VISIBLE) {
+                    set.setVisibility(e.getId(), View.GONE);
+
+                    set.setGoneMargin(f.getId(), ConstraintSet.START,
+                            (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, getResources().getDisplayMetrics()));
+                } else {
+                    set.setVisibility(e.getId(), View.VISIBLE);
+                }
+
+                TransitionManager.beginDelayedTransition(item);
+                set.applyTo(item);
+            }
+        });
+
         return container;
     }
 
@@ -394,6 +420,55 @@ public class ConstraintLayoutActivity extends BasicActivity {
         return container;
     }
 
+    private View obtainPlaceholderConstraints() {
+        final ConstraintLayout container = (ConstraintLayout) inflate(5);
+
+        final Placeholder focused = container.findViewById(R.id.template_tab_focused);
+        final TextView content = container.findViewById(R.id.content);
+        final ImageView tab1 = container.findViewById(R.id.tab_1);
+        final ImageView tab2 = container.findViewById(R.id.tab_2);
+        final ImageView tab3 = container.findViewById(R.id.tab_3);
+        final ImageView tab4 = container.findViewById(R.id.tab_4);
+
+        tab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(container);
+                content.setText("tree");
+                focused.setContentId(tab1.getId());
+            }
+        });
+
+        tab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(container);
+                content.setText("camping_tent");
+                focused.setContentId(tab2.getId());
+            }
+        });
+
+        tab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(container);
+                content.setText("boat");
+                focused.setContentId(tab3.getId());
+            }
+        });
+
+        tab4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransitionManager.beginDelayedTransition(container);
+                content.setText("television");
+                focused.setContentId(tab4.getId());
+            }
+        });
+
+        return container;
+    }
+
     private class ConstraintAdapter extends PagerAdapter {
 
         @Override
@@ -426,6 +501,9 @@ public class ConstraintLayoutActivity extends BasicActivity {
                     break;
                 case 4:
                     item = obtainDimensionsConstraints();
+                    break;
+                case 5:
+                    item = obtainPlaceholderConstraints();
                     break;
                 default:
                     throw new IllegalArgumentException("invalid position");
